@@ -3,29 +3,92 @@
 	"name": "Basm",
 	"patterns": [
 		{
-			"include": "#keywords"
+			"include": "#instructions"
+		},
+		{
+			"include": "#labels"
 		},
 		{
 			"include": "#strings"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#directives"
+		},
+		{
+			"include": "#comments"
 		}
 	],
 	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.basm",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted.double.basm",
-			"begin": "\"",
-			"end": "\"",
+		"instructions": {
 			"patterns": [
 				{
-					"name": "constant.character.escape.basm",
-					"match": "\\\\."
+					"name": "keyword.operator.logical.basm",
+					"match": "\\b(andb|orb|xor|shr|shl|notb)\\b"
+				},
+				{
+					"name": "keyword.operator.comparision.basm",
+					"match": "\\b(eqi|gei|gti|lei|lti|nei|equ|geu|gtu|leu|ltu|neu|eqf|gef|gtf|lef|ltf|nef)\\b"
+				},
+				{
+					"name": "keyword.operator.arithmetic.basm",
+					"match": "\\b(plusi|minusi|multi|divi|modi|multu|divu|modu|plusf|minusf|multf|divf)\\b"
+				},
+				{
+					"name": "keyword.control.basm",
+					"match": "\\b(jmp|jmp_if|halt|not)\\b"
+				},
+				{
+					"name": "entity.name.function.basm",
+					"match": "\\b(read8|read16|read32|read64|write8|write16|write32|write64|i2f|u2f|f2i|f2u|nop|push|drop|dup)\\b"
+				},
+				{
+					"name": "support.function.basm",
+					"match": "\\b(ret|call|native|swap)\\b"
 				}
 			]
+		},
+		"labels": {
+			"name": "entity.name.label.basm",
+			"match": "(\\w+):"
+		},
+		"strings": {
+			"patterns": [
+				{
+					"name": "string.quoted.double.basm",
+					"begin": "\"",
+					"end": "\""
+				},
+				{
+					"name": "string.quoted.single.basm",
+					"begin": "'",
+					"end": "'"
+				}
+			]
+		},
+		"numbers": {
+			"patterns": [
+				{
+					"name": "constant.numeric.decimal.basm",
+					"match": "\\b\\d[0-9_]*(\\.\\d[0-9_]*)?\\b"
+				},
+				{
+					"name": "constant.numeric.hex.basm",
+					"match": "\\b0[xX][0-9a-fA-F][0-9_a-fA-F]*\\b"
+				}
+			]
+		},
+		"directives": {
+			"name": "keyword.other.directive.basm",
+			"begin": "%",
+			"end": " "
+		},
+		"comments": {
+			"name": "comment.line.semicolon.basm",
+			"begin": ";",
+			"end": "$"
 		}
 	},
 	"scopeName": "source.basm"
