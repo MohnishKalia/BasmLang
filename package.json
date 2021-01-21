@@ -1,0 +1,25 @@
+{
+    "name": "basm-language-support",
+    "displayName": "Basm Language Support",
+    "description": "Unofficial support for the Basm language.",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.52.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "basm",
+            "aliases": ["Basm", "basm"],
+            "extensions": [".basm"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "basm",
+            "scopeName": "source.basm",
+            "path": "./syntaxes/basm.tmLanguage.json"
+        }]
+    }
+}
